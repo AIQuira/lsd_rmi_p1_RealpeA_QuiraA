@@ -40,6 +40,24 @@ public class GenerarTurnoRepositoryImpl implements GeneradorTurnoRepositoryInt {
 
     @Override
     public NodoTurnoDTO generarTurno(String identificacion){
-        int posicion = this.
+        int posicion = this.ConsultarNumeroModuloDisponible();
+
+        if(posicion == -1){
+            System.out.println("Los modulos se encuentran ocupado");
+            this.usuariosFilaVirtual[this.CantidadUsuariosFila] = identificacion;
+            this.CantidadUsuariosFila++;
+            System.out.println("El usuario se agrego a la fila virtual");
+        }
+        else{
+            System.out.println("El modulo en la posicion "+posicion+", esta libre y se "
+                    + "asigna al usuario con identificacion "+identificacion);
+            this.vectorModulos[posicion].setOcupado(true);
+            this.vectorModulos[posicion].setNumeroTurno(this.numeroTurno);
+            this.vectorModulos[posicion].setIdentificacion(identificacion);
+        }
+        NodoTurnoDTO objNodoTurnoDTO = new NodoTurnoDTO(numeroTurno, CantidadUsuariosFila, identificacion);
+        this.numeroTurno++;
+        
+        return objNodoTurnoDTO;
     }
 }
