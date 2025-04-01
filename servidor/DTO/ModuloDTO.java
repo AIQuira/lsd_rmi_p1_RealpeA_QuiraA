@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class ModuloDTO implements Serializable{
     
-    private int setNumeroModulo;
+    private int NumeroModulo;
     private boolean ocupado;
     private int numeroTurno;
     private String identificacion;  
     
     public int getSetNumeroModulo() {
-        return setNumeroModulo;
+        return NumeroModulo;
     }
-    public void setSetNumeroModulo(int setNumeroModulo) {
-        this.setNumeroModulo = setNumeroModulo;
+    public void setNumeroModulo(int setNumeroModulo) {
+        this.NumeroModulo = setNumeroModulo;
     }
     public boolean isOcupado() {
         return ocupado;

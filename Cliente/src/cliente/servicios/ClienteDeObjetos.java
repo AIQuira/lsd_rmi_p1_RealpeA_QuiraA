@@ -4,9 +4,9 @@
  */
 package cliente.servicios;
 
+import Servidor.controladores.ControladorGeneradorTurnoInt;
 import cliente.utilidades.UtilidadesRegistroC;
 import cliente.vista.Menu;
-import servidor.controladores.ControladorGeneradorTurnoInt;
 
 /**
  *

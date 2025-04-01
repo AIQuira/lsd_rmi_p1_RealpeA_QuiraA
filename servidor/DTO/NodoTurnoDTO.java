@@ -6,6 +6,12 @@ public class NodoTurnoDTO {
     private int CantidadUsuariosFilaVirtual;
     private String identificacion;
 
+    public NodoTurnoDTO(int numeroTurno, int cantidadUsuariosFilaVirtual, String identificacion) {
+        this.numeroTurno = numeroTurno;
+        this.CantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        this.identificacion = identificacion;
+    }
+
     public int getNumeroTurno() {
         return numeroTurno;
     }

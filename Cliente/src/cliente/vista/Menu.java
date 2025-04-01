@@ -6,8 +6,9 @@ package cliente.vista;
 
 import cliente.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
+
 import servidor.DTO.NodoTurnoDTO;
-import servidor.controladores.ControladorGeneradorTurnoInt;
+import Servidor.controladores.ControladorGeneradorTurnoInt;
 
 /**
  *

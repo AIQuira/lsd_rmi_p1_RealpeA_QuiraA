@@ -5,12 +5,11 @@
  */
 package Servidor.servicios;
 
-
-import Servidor.utilidades.UtilidadesRegistroS;
-import Servidor.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
-import Servidor.Repositorios.UsuariosRepository;
-import Servidor.controladores.ControladorGestorUsuariosIml;
+import Servidor.utilidades.UtilidadesRegistroS;
+import Servidor.Repositorios.GenerarTurnoRepositoryImpl;
+import Servidor.controladores.ControladorGeneradorTurnoImpl;
+import Servidor.utilidades.UtilidadesConsola;
 
 public class ServidorDeObjetos
 {
@@ -23,15 +22,19 @@ public class ServidorDeObjetos
         System.out.println("Cual es el la dirección ip donde se encuentra  el rmiRegistry ");
         direccionIpRMIRegistry = UtilidadesConsola.leerCadena();
         System.out.println("Cual es el número de puerto por el cual escucha el rmiRegistry ");
-        numPuertoRMIRegistry = UtilidadesConsola.leerEntero(); 
-     
-        UsuariosRepository objRepository = new UsuariosRepository();
-        ControladorGestorUsuariosIml objRemoto = new ControladorGestorUsuariosIml(objRepository);//se leasigna el puerto de escucha del objeto remoto
+        numPuertoRMIRegistry = UtilidadesConsola.leerEntero();
+
+        GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl();
+        ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
         
         try
         {
            UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistry);
-           UtilidadesRegistroS.RegistrarObjetoRemoto(objRemoto, direccionIpRMIRegistry, numPuertoRMIRegistry, "controladorGestionUsuarios");            
+           UtilidadesRegistroS.RegistrarObjetoRemoto(
+            objRemoto,
+            direccionIpRMIRegistry,
+            numPuertoRMIRegistry,
+            "controladorGeneradorTurno");            
            
         } catch (Exception e)
         {

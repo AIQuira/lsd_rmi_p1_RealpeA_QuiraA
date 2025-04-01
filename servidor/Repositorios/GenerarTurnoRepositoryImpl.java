@@ -3,15 +3,15 @@ package Servidor.Repositorios;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import Servidor.DTO.ModuloDTO;
+import Servidor.DTO.NodoTurnoDTO;
 
-public class GenerarTurnoRepositoryImpl implements GeneradorTurnoRepositoryInt {
+public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
     
     private int numeroTurno;
     private int CantidadUsuariosFila = 0;
     private final ModuloDTO vectorModulos[];
     private final String usuariosFilaVirtual[];
 
-    @Override
     public GenerarTurnoRepositoryImpl()
     {
         System.out.println("Configurando Modulos...");
@@ -25,11 +25,10 @@ public class GenerarTurnoRepositoryImpl implements GeneradorTurnoRepositoryInt {
         }
     }
 
-    @Override
-    public ConsultarNumeroModuloDisponible(){
+    private int ConsultarNumeroModuloDisponible(){
         int posicion = -1;
 
-        for(int i = 0: i<3: i++){
+        for(int i = 0; i<3; i++){
             if (this.vectorModulos[i].isOcupado() == false) {
                 posicion = i;
                 break;

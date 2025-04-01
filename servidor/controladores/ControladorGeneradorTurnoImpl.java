@@ -3,12 +3,12 @@ package Servidor.controladores;
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
 
-import servidor.DTO.NodoTurnoDTO;
-import servidor.Repositorios.ControladorGeneradorTurnoInt;
+import Servidor.Repositorios.GenerarTurnoRepositoryInt;
+import Servidor.DTO.NodoTurnoDTO;
 
 public class ControladorGeneradorTurnoImpl extends UnicastRemoteObject implements ControladorGeneradorTurnoInt {
     
-    private final ControladorGeneradorTurnoInt objRepositorio;
+    private final GenerarTurnoRepositoryInt objRepositorio;
 
     public ControladorGeneradorTurnoImpl(GenerarTurnoRepositoryInt objRepositorio) throws RemoteException
     {
@@ -17,7 +17,7 @@ public class ControladorGeneradorTurnoImpl extends UnicastRemoteObject implement
     }
 
     @Override
-    public NodoTurnoDTO generarTurno(int identificacion) throws RemoteException {
+    public NodoTurnoDTO generarTurno (String identificacion) throws RemoteException {
         return this.objRepositorio.generarTurno(identificacion);
     }
 }
