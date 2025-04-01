@@ -1,8 +1,8 @@
-package servidor.Repositorios;
+package Servidor.Repositorios;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import servidor.DTO.ModuloDTO;
+import Servidor.DTO.ModuloDTO;
 
 public class GenerarTurnoRepositoryImpl implements GeneradorTurnoRepositoryInt {
     

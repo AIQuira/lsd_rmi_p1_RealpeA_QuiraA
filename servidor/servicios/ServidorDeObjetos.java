@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servidor.servicios;
+package Servidor.servicios;
 
 
-import servidor.utilidades.UtilidadesRegistroS;
-import servidor.utilidades.UtilidadesConsola;
+import Servidor.utilidades.UtilidadesRegistroS;
+import Servidor.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
-import servidor.Repositorios.UsuariosRepository;
-import servidor.controladores.ControladorGestorUsuariosIml;
+import Servidor.Repositorios.UsuariosRepository;
+import Servidor.controladores.ControladorGestorUsuariosIml;
 
 public class ServidorDeObjetos
 {

@@ -1,6 +1,7 @@
-package servidor.DTO;
+package Servidor.DTO;
 
 public class NodoTurnoDTO {
+
     private int numeroTurno;
     private int CantidadUsuariosFilaVirtual;
     private String identificacion;
