@@ -1,6 +1,10 @@
 package servidor.DTO;
 
-public class NodoTurnoDTO {
+import java.io.Serializable;
+
+public class NodoTurnoDTO implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     private int numeroTurno;
     private int cantidadUsuariosFilaVirtual;
@@ -25,7 +29,7 @@ public class NodoTurnoDTO {
     }
 
     public void setCantidadUsuariosFilaVirtual(int cantidadUsuariosFilaVirtual) {
-        cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        this.cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
     }
 
     public String getIdentificacion() {

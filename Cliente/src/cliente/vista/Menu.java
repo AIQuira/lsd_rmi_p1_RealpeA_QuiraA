@@ -47,7 +47,7 @@ public class Menu {
             NodoTurnoDTO objNodoTurno = objRemoto.generarTurno(id);
             if (objNodoTurno != null) {
                 System.out.println("Datos generados por el sistema");
-                System.out.println("Numero de identificación: " + objNodoTurno.getIdentificacion());
+                System.out.println("Numero de identificacion: " + objNodoTurno.getIdentificacion());
                 System.out.println("Numero de turno: " + objNodoTurno.getNumeroTurno());
                 System.out.println("Cantidad de usuarios en la fila virtual: " + objNodoTurno.getCantidadUsuariosFilaVirtual());
             }
