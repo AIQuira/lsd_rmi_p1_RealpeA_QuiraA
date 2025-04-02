@@ -1,10 +1,9 @@
-
-package Servidor.utilidades;
+package servidor.utilidades;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-public class UtilidadesConsola
-{
+
+public class UtilidadesConsola {
     public static int leerEntero()
     {
     	String linea = "";
@@ -57,4 +56,3 @@ public class UtilidadesConsola
     
     }
 }
-

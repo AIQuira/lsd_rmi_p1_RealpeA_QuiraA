@@ -8,7 +8,7 @@ import cliente.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
 
 import servidor.DTO.NodoTurnoDTO;
-import Servidor.controladores.ControladorGeneradorTurnoInt;
+import servidor.controladores.ControladorGeneradorTurnoInt;
 
 /**
  *
@@ -27,11 +27,11 @@ public class Menu {
     {
         int opcion = 0;
         do{
-            System.out.println("===========   Menú   ===========");
+            System.out.println("===========   Menu   ===========");
             System.out.println("        1. Generar turno        ");
             System.out.println("        2. Salir                ");
             System.out.println("==============    ==============");
-            System.out.println("Digite opción: ");
+            System.out.println("Digite una opcion: ");
             
             opcion = UtilidadesConsola.leerEntero();
             
@@ -44,7 +44,7 @@ public class Menu {
                     System.out.println("Salir...");
                     break;
                 default:
-                    System.out.println("Opción incorrecta");
+                    System.out.println("Opcion incorrecta");
                     break;
             }
         }while(opcion != 2);
@@ -54,17 +54,18 @@ public class Menu {
     {
         try
         {
-            System.out.println("Digite la identificación: ");
-            System.out.println("Ingrese la opcion: ");
+            System.out.println("Digite la identificacion: ");
             String id = UtilidadesConsola.leerCadena();
             
             NodoTurnoDTO objNodoTurno = objRemoto.generarTurno(id);
             if(objNodoTurno != null)
             {
                 System.out.println("Datos generados por el sistema");
-                System.out.println("Número de identificación: "+objNodoTurno.getIdentificacion());
-                System.out.println("Número de turno: "+objNodoTurno.getNumeroTurno());
+                System.out.println("Numero de identificación: "+objNodoTurno.getIdentificacion());
+                System.out.println("Numero de turno: "+objNodoTurno.getNumeroTurno());
                 System.out.println("Cantidad de usuarios en la fila virtual: "+objNodoTurno.getCantidadUsuariosFilaVirtual());
+            } else {
+                System.out.println("Nodo turno nulo");
             }
         }
         catch (RemoteException e)

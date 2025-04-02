@@ -1,9 +1,8 @@
-package Servidor.DTO;
+package servidor.DTO;
 
 import java.io.Serializable;
 
 public class ModuloDTO implements Serializable{
-    
     private int NumeroModulo;
     private boolean ocupado;
     private int numeroTurno;

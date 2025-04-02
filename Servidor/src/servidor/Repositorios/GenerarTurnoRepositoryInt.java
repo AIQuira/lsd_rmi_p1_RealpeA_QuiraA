@@ -1,6 +1,6 @@
-package Servidor.Repositorios;
+package servidor.Repositorios;
 
-import Servidor.DTO.NodoTurnoDTO;
+import servidor.DTO.NodoTurnoDTO;
 
 public interface GenerarTurnoRepositoryInt {
     public NodoTurnoDTO generarTurno(String identificacion);

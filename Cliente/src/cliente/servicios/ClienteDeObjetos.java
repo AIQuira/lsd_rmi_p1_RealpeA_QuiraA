@@ -4,7 +4,7 @@
  */
 package cliente.servicios;
 
-import Servidor.controladores.ControladorGeneradorTurnoInt;
+import servidor.controladores.ControladorGeneradorTurnoInt;
 import cliente.utilidades.UtilidadesRegistroC;
 import cliente.vista.Menu;
 
@@ -20,9 +20,9 @@ public class ClienteDeObjetos {
     {
         int numPuertoRMIRegistry = 0;
         String direccionIpRMIRegistry = "";
-         System.out.println("Cuál es la dirección ip donde se encuentra el rmiregistry ");
+         System.out.println("Cual es la direccion ip donde se encuentra el rmiregistry ");
          direccionIpRMIRegistry = cliente.utilidades.UtilidadesConsola.leerCadena();
-         System.out.println("Cuál es el npumero de puerto por el cual escucha el rmiregistry");
+         System.out.println("Cual es el npumero de puerto por el cual escucha el rmiregistry");
          numPuertoRMIRegistry = cliente.utilidades.UtilidadesConsola.leerEntero();
          
          objRemoto = (ControladorGeneradorTurnoInt) UtilidadesRegistroC.obtenerObjRemoto(
