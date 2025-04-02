@@ -3,12 +3,12 @@ package servidor.DTO;
 public class NodoTurnoDTO {
 
     private int numeroTurno;
-    private int CantidadUsuariosFilaVirtual;
+    private int cantidadUsuariosFilaVirtual;
     private String identificacion;
 
     public NodoTurnoDTO(int numeroTurno, int cantidadUsuariosFilaVirtual, String identificacion) {
         this.numeroTurno = numeroTurno;
-        this.CantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        this.cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
         this.identificacion = identificacion;
     }
 
@@ -21,11 +21,11 @@ public class NodoTurnoDTO {
     }
 
     public int getCantidadUsuariosFilaVirtual() {
-        return CantidadUsuariosFilaVirtual;
+        return cantidadUsuariosFilaVirtual;
     }
 
     public void setCantidadUsuariosFilaVirtual(int cantidadUsuariosFilaVirtual) {
-        CantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
     }
 
     public String getIdentificacion() {

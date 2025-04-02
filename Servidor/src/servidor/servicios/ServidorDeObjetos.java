@@ -13,9 +13,9 @@ public class ServidorDeObjetos {
         int numPuertoRMIRegistry = 0;
         String direccionIpRMIRegistry = "";
 
-        System.out.println("Cual es el la dirección ip donde se encuentra  el rmiRegistry ");
+        System.out.println("Cual es el la direccion ip donde se encuentra  el rmiRegistry ");
         direccionIpRMIRegistry = UtilidadesConsola.leerCadena();
-        System.out.println("Cual es el número de puerto por el cual escucha el rmiRegistry ");
+        System.out.println("Cual es el numero de puerto por el cual escucha el rmiRegistry ");
         numPuertoRMIRegistry = UtilidadesConsola.leerEntero();
 
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl();

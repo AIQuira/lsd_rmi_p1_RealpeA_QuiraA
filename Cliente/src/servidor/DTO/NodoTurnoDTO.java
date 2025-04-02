@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package servidor.DTO;
 
-import java.io.Serializable;
-
-public class NodoTurnoDTO implements Serializable {
+public class NodoTurnoDTO {
 
     private int numeroTurno;
-    private int cantidadUsuariosFilaVirtual;
+    private int CantidadUsuariosFilaVirtual;
     private String identificacion;
+
+    public NodoTurnoDTO(int numeroTurno, int cantidadUsuariosFilaVirtual, String identificacion) {
+        this.numeroTurno = numeroTurno;
+        this.CantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        this.identificacion = identificacion;
+    }
 
     public int getNumeroTurno() {
         return numeroTurno;
@@ -21,11 +21,11 @@ public class NodoTurnoDTO implements Serializable {
     }
 
     public int getCantidadUsuariosFilaVirtual() {
-        return cantidadUsuariosFilaVirtual;
+        return CantidadUsuariosFilaVirtual;
     }
 
     public void setCantidadUsuariosFilaVirtual(int cantidadUsuariosFilaVirtual) {
-        this.cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
+        CantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
     }
 
     public String getIdentificacion() {

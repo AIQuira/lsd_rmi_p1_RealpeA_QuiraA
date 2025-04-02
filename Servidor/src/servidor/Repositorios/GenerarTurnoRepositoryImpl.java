@@ -52,7 +52,7 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
         }
         NodoTurnoDTO objNodoTurnoDTO = new NodoTurnoDTO(numeroTurno, CantidadUsuariosFila, identificacion);
         this.numeroTurno++;
-
+        
         return objNodoTurnoDTO;
     }
 

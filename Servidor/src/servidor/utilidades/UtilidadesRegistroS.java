@@ -20,7 +20,7 @@ public class UtilidadesRegistroS {
             System.out.println("El rmiRegistry se ha obtenido y se encuentra escuchando en el puerto: " + numPuertoRMI);
 
         } catch (RemoteException e) {
-            System.out.println("El rmiRegistry no se localizó en el puerto: " + numPuertoRMI);
+            System.out.println("El rmiRegistry no se localizo en el puerto: " + numPuertoRMI);
 
             Registry registro = LocateRegistry.createRegistry(numPuertoRMI);
             System.out.println("El rmiRegistry  se ha creado en el puerto: " + numPuertoRMI);
@@ -32,7 +32,7 @@ public class UtilidadesRegistroS {
         String UrlRegistro = "rmi://" + dirIPNS + ":" + numPuertoNS + "/" + identificadorObjetoRemoto;
         try {
             Naming.rebind(UrlRegistro, objetoRemoto);
-            System.out.println("Se realizó el registro del objeto remoto en el ns ubicado en la dirección: " + dirIPNS + " y " + "puerto " + numPuertoNS);
+            System.out.println("Se realizo el registro del objeto remoto en el ns ubicado en la direccion: " + dirIPNS + " y " + "puerto " + numPuertoNS);
         } catch (RemoteException e) {
             System.out.println("Error en el registro del objeto remoto");
             e.printStackTrace();
