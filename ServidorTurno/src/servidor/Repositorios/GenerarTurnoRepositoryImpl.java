@@ -62,13 +62,13 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
         //Se invoca el método remoto mostrar notificación para enviar un mensaje al servidor display
         NotificacionDTO objNotificacion = new NotificacionDTO();
         objNotificacion.setVectorModulos(vectorModulos);
-        objNotificacion.setCantidadUsuarioVirtual(CantidadUsuariosFila);
+        objNotificacion.setCantidadUsuariosFilaVirtual(CantidadUsuariosFila);
         
         try{
             this.objRemotoDisplay.mostrarNotificacion(objNotificacion);
             System.out.println("Notificando al servidor display...");
         } catch(RemoteException ex){
-            System.out.println("No fue posible notificar al servidor display...");
+            System.out.println("No fue posible notificar al servidor display..."+ex.getMessage());
         }
         
         return objNodoTurnoDTO;

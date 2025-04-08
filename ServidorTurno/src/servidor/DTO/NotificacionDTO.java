@@ -1,29 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package servidor.DTO;
 
-import servidor.DTO.ModuloDTO;
 import java.io.Serializable;
 
-/**
- *
- * @author FIET-PIS
- */
-
-public class NotificacionDTO {
-    private ModuloDTO vectorModulos[];
-    private int cantidadUsuarioVirtual;
+public class NotificacionDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     
-    public NotificacionDTO(){}
-
-    public int getCantidadUsuarioVirtual() {
-        return cantidadUsuarioVirtual;
-    }
-
-    public void setCantidadUsuarioVirtual(int cantidadUsuarioVirtual) {
-        this.cantidadUsuarioVirtual = cantidadUsuarioVirtual;
+    private ModuloDTO vectorModulos[];
+    private int cantidadUsuariosFilaVirtual;
+    
+    public NotificacionDTO (){
+        
     }
 
     public ModuloDTO[] getVectorModulos() {
@@ -32,6 +18,14 @@ public class NotificacionDTO {
 
     public void setVectorModulos(ModuloDTO[] vectorModulos) {
         this.vectorModulos = vectorModulos;
+    }
+
+    public int getCantidadUsuariosFilaVirtual() {
+        return cantidadUsuariosFilaVirtual;
+    }
+
+    public void setCantidadUsuariosFilaVirtual(int cantidadUsuariosFilaVirtual) {
+        this.cantidadUsuariosFilaVirtual = cantidadUsuariosFilaVirtual;
     }
     
     

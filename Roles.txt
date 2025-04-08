@@ -1,2 +1,2 @@
-Cliente: Ana Isabel Quira
-Servidor: Andrea Realpe
+Servidor Display: Ana Isabel Quira
+Servidor Turno: Andrea Realpe

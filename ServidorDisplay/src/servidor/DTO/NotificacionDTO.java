@@ -3,6 +3,8 @@ package servidor.DTO;
 import java.io.Serializable;
 
 public class NotificacionDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private ModuloDTO vectorModulos[];
     private int cantidadUsuariosFilaVirtual;
     
