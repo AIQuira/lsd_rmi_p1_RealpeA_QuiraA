@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import servidor.Repositorios.GenerarTurnoRepositoryImpl;
 import servidor.controladores.ControladorDisplayInt;
 import servidor.controladores.ControladorGeneradorTurnoImpl;
+import servidor.controladores.ControladorRegistroReferenciaModulosImpl;
 import servidor.utilidades.UtilidadesConsola;
 import servidor.utilidades.UtilidadesRegistroC;
 import servidor.utilidades.UtilidadesRegistroS;
@@ -32,8 +33,9 @@ public class ServidorDeObjetos {
                 direccionIpRMIRegistryServidorDisplay,
                 numPuertoRMIRegistryServidorDisplay,
                 "controladorDisplay");
-                
-        GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay);
+        
+        ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl();
+        GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
 
         try {
@@ -43,7 +45,12 @@ public class ServidorDeObjetos {
                     direccionIpRMIRegistryServidorTurnos,
                     numPuertoRMIRegistryServidorTurnos,
                     "controladorGeneradorTurno");
-
+            
+            UtilidadesRegistroS.RegistrarObjetoRemoto(
+                    objRemotoRegistroRefModulos,
+                    direccionIpRMIRegistryServidorTurnos,
+                    numPuertoRMIRegistryServidorTurnos,
+                    "controladorRegistroReferenciaModulos");
         } catch (Exception e) {
             System.err.println("No fue posible Arrancar el NS o Registrar el objeto remoto" + e.getMessage());
         }

@@ -1,2 +1,1 @@
-Servidor Display: Ana Isabel Quira
-Servidor Turno: Andrea Realpe
+Servidor Turno y Modulo: Ana Isabel Quira

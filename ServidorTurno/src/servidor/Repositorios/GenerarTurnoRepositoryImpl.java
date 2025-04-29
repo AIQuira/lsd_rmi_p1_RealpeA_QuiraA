@@ -5,6 +5,7 @@ import servidor.DTO.NodoTurnoDTO;
 import servidor.DTO.NotificacionDTO;
 import servidor.controladores.ControladorDisplayInt;
 import java.rmi.RemoteException;
+import servidor.controladores.ControladorRegistroReferenciaModulosImpl;
 
 public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
 
@@ -14,10 +15,12 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
     private final String usuariosFilaVirtual[];
     //Almacena referencia remota al servidor display
     private final ControladorDisplayInt objRemotoDisplay;
+    private final ControladorRegistroReferenciaModulosImpl objRemotoRegistroModulos;
     
-    public GenerarTurnoRepositoryImpl(ControladorDisplayInt objRemotoDisplay) {
+    public GenerarTurnoRepositoryImpl(ControladorDisplayInt objRemotoDisplay, ControladorRegistroReferenciaModulosImpl objRemotoRegistroModulos) {
         System.out.println("Configurando Modulos...");
         this.objRemotoDisplay = objRemotoDisplay;
+        this.objRemotoRegistroModulos = objRemotoRegistroModulos;
         this.vectorModulos = new ModuloDTO[3];
         this.usuariosFilaVirtual = new String[10];
         this.numeroTurno = 1;
@@ -55,6 +58,8 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
             this.vectorModulos[posicion].setOcupado(true);
             this.vectorModulos[posicion].setNumeroTurno(this.numeroTurno);
             this.vectorModulos[posicion].setIdentificacion(identificacion);
+            System.out.println("Notificando al modulo");
+            this.objRemotoRegistroModulos.notificarModulo("Turno "+this.numeroTurno+" asignado al usuario con "+identificacion, posicion+1);
         }
         NodoTurnoDTO objNodoTurnoDTO = new NodoTurnoDTO(numeroTurno, CantidadUsuariosFila, identificacion);
         this.numeroTurno++;
