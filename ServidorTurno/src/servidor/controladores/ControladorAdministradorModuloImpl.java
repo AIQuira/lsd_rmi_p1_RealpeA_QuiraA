@@ -19,8 +19,7 @@ public class ControladorAdministradorModuloImpl extends UnicastRemoteObject impl
         List<ModuloDTO> modulos = registroModulos.obtenerModulosDTO();
         for (ModuloDTO modulo : modulos) {
             if (modulo.getIdentificacion().equals(idModulo)) {
-                modulo.setOcupado(false);  // liberarlo
-                return true;
+                modulo.setOcupado(false); 
             }
         }
         return false;

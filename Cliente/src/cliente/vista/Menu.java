@@ -12,11 +12,9 @@ import servidor.controladores.ControladorGeneradorTurnoInt;
 public class Menu {
 
     private final ControladorGeneradorTurnoInt objRemoto;
-    private final ControladorAdministradorModuloInt objAdminModulo;
 
-    public Menu(ControladorGeneradorTurnoInt objRemoto, ControladorAdministradorModuloInt adminModulo) {
+    public Menu(ControladorGeneradorTurnoInt objRemoto) {
         this.objRemoto = objRemoto;
-        this.objAdminModulo = adminModulo;
     }
 
     public void ejecutarMenuPrincipal() {
@@ -24,7 +22,6 @@ public class Menu {
         do {
             System.out.println("==============    Menu   ================");
             System.out.println("        1. Generar turno        ");
-            System.out.println("        2. Administrar Modulo (Liberar)        ");
             System.out.println("        3. Salir                ");
             System.out.println("==================    ===================");
             System.out.println("Digite una opcion: ");
@@ -36,16 +33,13 @@ public class Menu {
                     Opcion1();
                     break;
                 case 2:
-                    Opcion2();
-                    break;
-                case 3:
                     System.out.println("Salir...");
                     break;
                 default:
                     System.out.println("Opcion incorrecta");
                     break;
             }
-        } while (opcion != 3);
+        } while (opcion != 2);
     }
 
     private void Opcion1() {
@@ -62,28 +56,6 @@ public class Menu {
             }
         } catch (RemoteException e) {
             System.out.println("La operacion no se pudo completar, intente nuevamente...");
-            e.printStackTrace();
-        }
-    }
-    private void Opcion2(){
-        try{
-            List<ModuloDTO> modulos = objAdminModulo.listarModulos();
-            System.out.println("=== Lista de Modulos ===");
-            for (ModuloDTO m : modulos) {
-                System.out.println("ID: " + m.getIdentificacion() +
-                                   " | Ocupado: " + (m.isOcupado() ? "Si" : "No"));
-            }
-            System.out.println("Ingrese el numero del modulo a liberar: ");
-            String id = UtilidadesConsola.leerCadena();
-            
-            boolean exito = objAdminModulo.liberarModulo(id);
-            if(exito){
-                System.out.println("Modulo liberado correctamente.");
-            }else{
-                System.out.println("No se encontro el modulo con ese numero.");
-            }
-        } catch (RemoteException e){
-            System.out.println("Error al liberar el modulo: "+ e.getMessage());
             e.printStackTrace();
         }
     }

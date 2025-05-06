@@ -8,7 +8,6 @@ import servidor.controladores.ControladorAdministradorModuloInt;
 public class ClienteDeObjetos {
     
     private static ControladorGeneradorTurnoInt objRemoto;
-    private static ControladorAdministradorModuloInt objAdminModulo;
 
     public static void main(String[] args)
     {
@@ -23,12 +22,8 @@ public class ClienteDeObjetos {
             direccionIpRMIRegistry,
             numPuertoRMIRegistry,
             "controladorGeneradorTurno");
-         objAdminModulo = (ControladorAdministradorModuloInt) UtilidadesRegistroC.obtenerObjRemoto(
-            direccionIpRMIRegistry,
-            numPuertoRMIRegistry,
-            "controladorAdministradorModulos");
          
-         Menu objMenu = new Menu(objRemoto, objAdminModulo);
+         Menu objMenu = new Menu(objRemoto);
          objMenu.ejecutarMenuPrincipal();
     }
 }

@@ -21,8 +21,13 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
 
     @Override
     public void registrarReferenciaModulo(ControladorCallBackInt referenciaModulo, int noModulo) throws RemoteException {
-        this.referencias.put(noModulo, referenciaModulo);
-        this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+        if(!referencias.containsKey(noModulo)){
+            this.referencias.put(noModulo, referenciaModulo);
+        }else{
+            System.out.println("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
+            throw new IllegalArgumentException("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
+        }
+//        this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
     }
     
     public void notificarModulo(String mensaje, int noModulo) {
@@ -37,5 +42,19 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
     @Override
     public List<ModuloDTO> obtenerModulosDTO() throws RemoteException {
         return new ArrayList<>(modulosRegistrados.values());
+    }
+
+    @Override
+    public int liberarModulo(int idModulo, ControladorCallBackInt refModulo) throws RemoteException {
+        if(!referencias.containsKey(idModulo)){
+            return -1;
+        }
+        if(!referencias.get(idModulo).equals(refModulo)){
+            return -2;
+        }
+        if(!modulosRegistrados.get(idModulo).isOcupado()){
+            return -3;
+        }
+        return 1;
     }
 }
