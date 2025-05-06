@@ -12,21 +12,33 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
     
     private final HashMap<Integer, ControladorCallBackInt> referencias;
     private final HashMap<Integer, ModuloDTO> modulosRegistrados; // nuevo
+    private final ControladorAdministradorSistemaImpl adminSistema;
     
-    public ControladorRegistroReferenciaModulosImpl() throws RemoteException {
+    public ControladorRegistroReferenciaModulosImpl(ControladorAdministradorSistemaImpl adminSistema) throws RemoteException {
         super();
         this.referencias = new HashMap();
         this.modulosRegistrados = new HashMap<>();
+        this.adminSistema = adminSistema;
     }
 
     @Override
     public void registrarReferenciaModulo(ControladorCallBackInt referenciaModulo, int noModulo) throws RemoteException {
-        this.referencias.put(noModulo, referenciaModulo);
-        this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+        if (adminSistema.estaActivo()){
+            System.out.println(adminSistema.estaActivo());
+            this.referencias.put(noModulo, referenciaModulo);
+            this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+        } else {
+            System.out.println("El sistema no ha sido activado, no se pueden asignar modulos.");
+            throw new RemoteException("El sistema no ha sido activado, no se pueden asignar modulos.");
+        }
     }
     
     public void notificarModulo(String mensaje, int noModulo) {
         var referencia = this.referencias.get(noModulo);
+        if (referencia == null) {
+            System.out.println("No se encontraron modulos registrados.");
+            return;
+        }
         try {
             referencia.notificarAsignacionTurno(mensaje);
         } catch (RemoteException ex) {

@@ -42,4 +42,8 @@ public class ControladorAdministradorSistemaImpl extends UnicastRemoteObject imp
             System.out.println("Error al notificar al administrador del sistema.");
         }
     }
+    
+    public boolean estaActivo() {
+        return this.sistemaActivo;
+    }
 }

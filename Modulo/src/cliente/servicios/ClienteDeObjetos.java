@@ -31,7 +31,7 @@ public class ClienteDeObjetos {
             objRemoto.registrarReferenciaModulo(objRemotoLadoCliente, noModulo);
             System.out.println("Esperando notificaciones");
         } catch (RemoteException ex) {
-            System.out.println("Error al registrar el modulo en el servidor");
+            System.out.println("Error al registrar el modulo en el servidor: "+ex.getCause().getMessage());
         }
     }
 }
