@@ -18,7 +18,7 @@ public class ControladorAdministradorSistemaImpl extends UnicastRemoteObject imp
     public boolean activarSistema() throws RemoteException {
         if (this.sistemaActivo == false){
             this.sistemaActivo = true;
-            System.out.println("Activando sistema...");
+            System.out.println("Activando el sistema...");
         } else {
             System.out.println("No se puede activar el sistema.");
         }
@@ -41,5 +41,9 @@ public class ControladorAdministradorSistemaImpl extends UnicastRemoteObject imp
         } catch (RemoteException ex) {
             System.out.println("Error al notificar al administrador del sistema.");
         }
+    }
+    
+    public boolean estaActivo() {
+        return this.sistemaActivo;
     }
 }

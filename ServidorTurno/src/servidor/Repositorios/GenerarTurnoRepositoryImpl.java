@@ -55,7 +55,7 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
             this.usuariosFilaVirtual[this.CantidadUsuariosFila] = identificacion;
             this.CantidadUsuariosFila++;
             System.out.println("Notificando al administrador...");
-            this.objRemotoAdministrador.notificarAdministrador("Todos los módulos se encuentran ocupados, se procede a reenviar los turnos a la fila virtual.");
+            this.objRemotoAdministrador.notificarAdministrador("Todos los modulos se encuentran ocupados, se procede a reenviar los turnos a la fila virtual.");
             System.out.println("El usuario se agrego a la fila virtual");
         } else {
             System.out.println("El modulo en la posicion " + posicion + ", esta libre y se "

@@ -40,10 +40,10 @@ public class ServidorDeObjetos {
                 numPuertoRMIRegistryServidorDisplay,
                 "controladorDisplay");
         
-        ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl();
         ControladorAdministradorSistemaImpl objRemotoAdministrador = new ControladorAdministradorSistemaImpl();
+        ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl(objRemotoAdministrador);
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos, objRemotoAdministrador);
-        ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
+        ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio, objRemotoAdministrador);
         ControladorAdministradorModuloImpl objAdministradorModulo = new ControladorAdministradorModuloImpl(objRemotoRegistroRefModulos);
         
         try {

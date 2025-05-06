@@ -12,15 +12,18 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
     
     private final HashMap<Integer, ControladorCallBackInt> referencias;
     private final HashMap<Integer, ModuloDTO> modulosRegistrados; // nuevo
+    private final ControladorAdministradorSistemaImpl adminSistema;
     
-    public ControladorRegistroReferenciaModulosImpl() throws RemoteException {
+    public ControladorRegistroReferenciaModulosImpl(ControladorAdministradorSistemaImpl adminSistema) throws RemoteException {
         super();
         this.referencias = new HashMap();
         this.modulosRegistrados = new HashMap<>();
+        this.adminSistema = adminSistema;
     }
 
     @Override
     public void registrarReferenciaModulo(ControladorCallBackInt referenciaModulo, int noModulo) throws RemoteException {
+<<<<<<< HEAD
         if(!referencias.containsKey(noModulo)){
             this.referencias.put(noModulo, referenciaModulo);
         }else{
@@ -28,6 +31,15 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
             throw new IllegalArgumentException("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
         }
 //        this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+=======
+        if (adminSistema.estaActivo()){
+            this.referencias.put(noModulo, referenciaModulo);
+            this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+        } else {
+            System.out.println("El sistema no ha sido activado, no se pueden asignar modulos.");
+            throw new RemoteException("El sistema no ha sido activado, no se pueden asignar modulos.");
+        }
+>>>>>>> c40a37c7f1ecd8783e7d96c4b6e7c68cadb6379b
     }
     
     public void notificarModulo(String mensaje, int noModulo) {

@@ -56,7 +56,7 @@ public class Menu {
             }
         } catch (RemoteException e) {
             System.out.println("La operacion no se pudo completar, intente nuevamente...");
-            e.printStackTrace();
+            System.out.println("Error al generar turno: "+e.getCause().getMessage());
         }
     }
 }

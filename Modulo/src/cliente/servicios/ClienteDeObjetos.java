@@ -4,9 +4,6 @@ import cliente.controladores.ControladorCallBackImpl;
 import cliente.utilidades.UtilidadesConsola;
 import cliente.utilidades.UtilidadesRegistroC;
 import java.rmi.RemoteException;
-import java.util.List;
-import servidor.DTO.ModuloDTO;
-import servidor.controladores.ControladorAdministradorModuloInt;
 import servidor.controladores.ControladorRegistroReferenciaModulosInt;
 
 public class ClienteDeObjetos {
@@ -33,12 +30,8 @@ public class ClienteDeObjetos {
         try{
             ControladorCallBackImpl objRemotoLadoCliente;
             objRemotoLadoCliente = new ControladorCallBackImpl();
-            try {
-                objRemoto.registrarReferenciaModulo(objRemotoLadoCliente, noModulo);
-                System.out.println("Esperando notificaciones");
-            } catch (RemoteException ex) {
-                System.out.println("Error al registrar el modulo en el servidor");
-            }
+            objRemoto.registrarReferenciaModulo(objRemotoLadoCliente, noModulo);
+            System.out.println("Esperando notificaciones");
 
             int opcion = 0;
             do {
@@ -76,9 +69,8 @@ public class ClienteDeObjetos {
                 }
             } while (opcion != 2);
             
-        } catch (RemoteException e){
-            System.out.println("Error al liberar el modulo: "+ e.getMessage());
-            e.printStackTrace();
+        } catch (RemoteException ex) {
+            System.out.println("Error al registrar el modulo en el servidor: "+ex.getCause().getMessage());
         }
         
     }
