@@ -3,12 +3,7 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-<<<<<<<< Updated upstream:AdministradorSistema/nbproject/project.xml
-            <name>AdministradorSistema</name>
-========
-            <name>AdministradorModulo</name>
->>>>>>>> Stashed changes:AdministradorModulo/nbproject/project.xml
-            <explicit-platform explicit-source-supported="true"/>
+            <name>Modulo</name>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
