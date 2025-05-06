@@ -28,7 +28,9 @@ public class ControladorDisplayImpl extends UnicastRemoteObject implements Contr
                                     vectorModulos[i].getIdentificacion());
             }
         }
-        System.out.println("Cantidad de usuarios en la fila virtual: "+objNotificacion.getCantidadUsuariosFilaVirtual());
+        if(objNotificacion.getCantidadUsuariosFilaVirtual() != 0) {
+            System.out.println("Cantidad de usuarios en la fila virtual: "+objNotificacion.getCantidadUsuariosFilaVirtual());
+        }
         System.out.println("Ultima actualizacion: "+ horaActual);
     }
 }
