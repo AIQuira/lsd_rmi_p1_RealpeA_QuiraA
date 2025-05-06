@@ -9,14 +9,14 @@ public class ModuloDTO implements Serializable{
     private String identificacion;
     
     public ModuloDTO(){
-        
+
     }
     
     public ModuloDTO(String identificacion, boolean ocupado){
        this.identificacion = identificacion;
        this.ocupado = ocupado; 
     }
-
+    
     public int getNumeroModulo() {
         return numeroModulo;
     }

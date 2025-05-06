@@ -68,13 +68,11 @@ public class Menu {
     private void Opcion2(){
         try{
             List<ModuloDTO> modulos = objAdminModulo.listarModulos();
-            System.out.println("=== Lista de módulos ===");
+            System.out.println("=== Lista de Modulos ===");
             for (ModuloDTO m : modulos) {
                 System.out.println("ID: " + m.getIdentificacion() +
-                                   " | Numero de Modulo: " + m.getNumeroModulo() +
-                                   " | Ocupado: " + (m.isOcupado() ? "Sí" : "No"));
+                                   " | Ocupado: " + (m.isOcupado() ? "Si" : "No"));
             }
-            
             System.out.println("Ingrese el numero del modulo a liberar: ");
             String id = UtilidadesConsola.leerCadena();
             

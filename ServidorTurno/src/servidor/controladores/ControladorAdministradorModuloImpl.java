@@ -7,27 +7,26 @@ import servidor.DTO.ModuloDTO;
 
 public class ControladorAdministradorModuloImpl extends UnicastRemoteObject implements ControladorAdministradorModuloInt {
     
-    private final List<ModuloDTO> listaModulos;
+    private final ControladorRegistroReferenciaModulosInt registroModulos;
     
-    public ControladorAdministradorModuloImpl(List<ModuloDTO> listarModulos) throws RemoteException{
+    public ControladorAdministradorModuloImpl(ControladorRegistroReferenciaModulosInt registroModulos) throws RemoteException{
         super();
-        this.listaModulos = listarModulos;
+        this.registroModulos = registroModulos;
     }
     
     @Override
     public boolean liberarModulo(String idModulo) throws RemoteException {
-        for(ModuloDTO modulo : listaModulos){
-            if(modulo.getIdentificacion().equals(idModulo)){
-                modulo.setOcupado(true);
+        List<ModuloDTO> modulos = registroModulos.obtenerModulosDTO();
+        for (ModuloDTO modulo : modulos) {
+            if (modulo.getIdentificacion().equals(idModulo)) {
+                modulo.setOcupado(false);  // liberarlo
                 return true;
             }
         }
         return false;
     }
-
     @Override
     public List<ModuloDTO> listarModulos() throws RemoteException {
-        return listaModulos;
+        return registroModulos.obtenerModulosDTO();
     }
-    
 }

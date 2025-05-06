@@ -42,18 +42,7 @@ public class ServidorDeObjetos {
         ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl();
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
-        
-        //Listado de modulos
-        List<ModuloDTO> listaModulos = new ArrayList<>();
-        for (int i = 1; i <= 3; i++){
-            ModuloDTO modulo = new ModuloDTO();
-            modulo.setNumeroModulo(i);
-            modulo.setOcupado(false);
-            modulo.setNumeroTurno(0);
-            modulo.setIdentificacion("modulo"+i);
-            listaModulos.add(modulo);
-        }
-        ControladorAdministradorModuloImpl objAdministradorModulo = new ControladorAdministradorModuloImpl(listaModulos);
+        ControladorAdministradorModuloImpl objAdministradorModulo = new ControladorAdministradorModuloImpl(objRemotoRegistroRefModulos);
         
         try {
             UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistryServidorTurnos);

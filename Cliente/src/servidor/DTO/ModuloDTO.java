@@ -8,8 +8,12 @@ public class ModuloDTO implements Serializable{
     private int numeroTurno;
     private String identificacion;
     
-    public ModuloDTO(){
-        
+    public ModuloDTO(){  
+    }
+    
+    public ModuloDTO(String identificacion, boolean ocupado){
+       this.identificacion = identificacion;
+       this.ocupado = ocupado; 
     }
 
     public int getNumeroModulo() {
