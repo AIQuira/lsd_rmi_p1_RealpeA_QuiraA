@@ -1,6 +1,9 @@
 package servidor.servicios;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+import servidor.DTO.ModuloDTO;
 import servidor.Repositorios.GenerarTurnoRepositoryImpl;
 import servidor.controladores.ControladorDisplayInt;
 import servidor.controladores.ControladorGeneradorTurnoImpl;
@@ -8,6 +11,8 @@ import servidor.controladores.ControladorRegistroReferenciaModulosImpl;
 import servidor.utilidades.UtilidadesConsola;
 import servidor.utilidades.UtilidadesRegistroC;
 import servidor.utilidades.UtilidadesRegistroS;
+import servidor.controladores.ControladorAdministradorModuloImpl;
+
 
 public class ServidorDeObjetos {
 
@@ -37,7 +42,19 @@ public class ServidorDeObjetos {
         ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl();
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
-
+        
+        //Listado de modulos
+        List<ModuloDTO> listaModulos = new ArrayList<>();
+        for (int i = 1; i <= 3; i++){
+            ModuloDTO modulo = new ModuloDTO();
+            modulo.setNumeroModulo(i);
+            modulo.setOcupado(false);
+            modulo.setNumeroTurno(0);
+            modulo.setIdentificacion("modulo"+i);
+            listaModulos.add(modulo);
+        }
+        ControladorAdministradorModuloImpl objAdministradorModulo = new ControladorAdministradorModuloImpl(listaModulos);
+        
         try {
             UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistryServidorTurnos);
             UtilidadesRegistroS.RegistrarObjetoRemoto(
@@ -51,7 +68,13 @@ public class ServidorDeObjetos {
                     direccionIpRMIRegistryServidorTurnos,
                     numPuertoRMIRegistryServidorTurnos,
                     "controladorRegistroReferenciaModulos");
-        } catch (Exception e) {
+            
+            UtilidadesRegistroS.RegistrarObjetoRemoto(
+                    objAdministradorModulo,
+                    direccionIpRMIRegistryServidorTurnos,
+                    numPuertoRMIRegistryServidorTurnos,
+                    "controladorAdministradorModulos");
+        } catch (RemoteException e) {
             System.err.println("No fue posible Arrancar el NS o Registrar el objeto remoto" + e.getMessage());
         }
 
