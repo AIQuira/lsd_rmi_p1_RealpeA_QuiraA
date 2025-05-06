@@ -12,6 +12,7 @@ import servidor.utilidades.UtilidadesConsola;
 import servidor.utilidades.UtilidadesRegistroC;
 import servidor.utilidades.UtilidadesRegistroS;
 import servidor.controladores.ControladorAdministradorModuloImpl;
+import servidor.controladores.ControladorAdministradorSistemaImpl;
 
 
 public class ServidorDeObjetos {
@@ -40,12 +41,20 @@ public class ServidorDeObjetos {
                 "controladorDisplay");
         
         ControladorRegistroReferenciaModulosImpl objRemotoRegistroRefModulos = new ControladorRegistroReferenciaModulosImpl();
-        GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos);
+        ControladorAdministradorSistemaImpl objRemotoAdministrador = new ControladorAdministradorSistemaImpl();
+        GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay, objRemotoRegistroRefModulos, objRemotoAdministrador);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);
         ControladorAdministradorModuloImpl objAdministradorModulo = new ControladorAdministradorModuloImpl(objRemotoRegistroRefModulos);
         
         try {
             UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistryServidorTurnos);
+            
+            UtilidadesRegistroS.RegistrarObjetoRemoto(
+                    objRemotoAdministrador, 
+                    direccionIpRMIRegistryServidorTurnos, 
+                    numPuertoRMIRegistryServidorTurnos, 
+                    "controladorAdministradorSistema");
+            
             UtilidadesRegistroS.RegistrarObjetoRemoto(
                     objRemoto,
                     direccionIpRMIRegistryServidorTurnos,

@@ -5,6 +5,7 @@ import servidor.DTO.NodoTurnoDTO;
 import servidor.DTO.NotificacionDTO;
 import servidor.controladores.ControladorDisplayInt;
 import java.rmi.RemoteException;
+import servidor.controladores.ControladorAdministradorSistemaImpl;
 import servidor.controladores.ControladorRegistroReferenciaModulosImpl;
 
 public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
@@ -16,11 +17,13 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
     //Almacena referencia remota al servidor display
     private final ControladorDisplayInt objRemotoDisplay;
     private final ControladorRegistroReferenciaModulosImpl objRemotoRegistroModulos;
+    private final ControladorAdministradorSistemaImpl objRemotoAdministrador;
     
-    public GenerarTurnoRepositoryImpl(ControladorDisplayInt objRemotoDisplay, ControladorRegistroReferenciaModulosImpl objRemotoRegistroModulos) {
+    public GenerarTurnoRepositoryImpl(ControladorDisplayInt objRemotoDisplay, ControladorRegistroReferenciaModulosImpl objRemotoRegistroModulos, ControladorAdministradorSistemaImpl objRemotoAdministrador) {
         System.out.println("Configurando Modulos...");
         this.objRemotoDisplay = objRemotoDisplay;
         this.objRemotoRegistroModulos = objRemotoRegistroModulos;
+        this.objRemotoAdministrador = objRemotoAdministrador;
         this.vectorModulos = new ModuloDTO[3];
         this.usuariosFilaVirtual = new String[10];
         this.numeroTurno = 1;
@@ -51,6 +54,8 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
             System.out.println("Los modulos se encuentran ocupado");
             this.usuariosFilaVirtual[this.CantidadUsuariosFila] = identificacion;
             this.CantidadUsuariosFila++;
+            System.out.println("Notificando al administrador...");
+            this.objRemotoAdministrador.notificarAdministrador("Todos los módulos se encuentran ocupados, se procede a reenviar los turnos a la fila virtual.");
             System.out.println("El usuario se agrego a la fila virtual");
         } else {
             System.out.println("El modulo en la posicion " + posicion + ", esta libre y se "
