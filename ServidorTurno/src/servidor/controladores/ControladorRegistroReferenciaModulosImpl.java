@@ -24,7 +24,6 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
     @Override
     public void registrarReferenciaModulo(ControladorCallBackInt referenciaModulo, int noModulo) throws RemoteException {
         if (adminSistema.estaActivo()){
-            System.out.println(adminSistema.estaActivo());
             this.referencias.put(noModulo, referenciaModulo);
             this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
         } else {
@@ -35,10 +34,6 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
     
     public void notificarModulo(String mensaje, int noModulo) {
         var referencia = this.referencias.get(noModulo);
-        if (referencia == null) {
-            System.out.println("No se encontraron modulos registrados.");
-            return;
-        }
         try {
             referencia.notificarAsignacionTurno(mensaje);
         } catch (RemoteException ex) {
