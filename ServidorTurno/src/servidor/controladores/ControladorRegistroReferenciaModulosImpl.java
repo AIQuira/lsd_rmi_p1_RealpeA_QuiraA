@@ -23,23 +23,18 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
 
     @Override
     public void registrarReferenciaModulo(ControladorCallBackInt referenciaModulo, int noModulo) throws RemoteException {
-<<<<<<< HEAD
-        if(!referencias.containsKey(noModulo)){
-            this.referencias.put(noModulo, referenciaModulo);
-        }else{
-            System.out.println("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
-            throw new IllegalArgumentException("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
-        }
-//        this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
-=======
         if (adminSistema.estaActivo()){
-            this.referencias.put(noModulo, referenciaModulo);
-            this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+            if(!referencias.containsKey(noModulo)){
+                this.referencias.put(noModulo, referenciaModulo);
+                this.modulosRegistrados.put(noModulo, new ModuloDTO(String.valueOf(noModulo), true)); // ocupado
+            }else{
+                System.out.println("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
+                throw new IllegalArgumentException("Error al registrar el modulo en el servidor, ese modulo ya esta registrado.");
+            }
         } else {
             System.out.println("El sistema no ha sido activado, no se pueden asignar modulos.");
             throw new RemoteException("El sistema no ha sido activado, no se pueden asignar modulos.");
         }
->>>>>>> c40a37c7f1ecd8783e7d96c4b6e7c68cadb6379b
     }
     
     public void notificarModulo(String mensaje, int noModulo) {

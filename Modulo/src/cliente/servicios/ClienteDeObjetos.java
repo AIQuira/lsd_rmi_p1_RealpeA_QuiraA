@@ -52,11 +52,14 @@ public class ClienteDeObjetos {
                         
                         if(respuestaLiberacion == -1){
                             System.out.println("No se encontro el modulo en las referencias.");
+                            break;
                         }if(respuestaLiberacion == -2){
                             System.out.println("No puede liberar un modulo que no sea el propio.");
+                            break;
                         }if(respuestaLiberacion == -3){
                             System.out.println("El modulo ya se encuentra liberado.");
-                        }else{
+                            break;
+                        }else if (respuestaLiberacion == 1){
                             System.out.println("Modulo liberado correctamente.");
                         }
                         break;
@@ -72,6 +75,5 @@ public class ClienteDeObjetos {
         } catch (RemoteException ex) {
             System.out.println("Error al registrar el modulo en el servidor: "+ex.getCause().getMessage());
         }
-        
     }
 }
