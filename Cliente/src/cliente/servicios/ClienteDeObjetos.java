@@ -3,11 +3,13 @@ package cliente.servicios;
 import servidor.controladores.ControladorGeneradorTurnoInt;
 import cliente.utilidades.UtilidadesRegistroC;
 import cliente.vista.Menu;
+import servidor.controladores.ControladorAdministradorModuloInt;
 
 public class ClienteDeObjetos {
     
     private static ControladorGeneradorTurnoInt objRemoto;
-    
+    private static ControladorAdministradorModuloInt objAdminModulo;
+
     public static void main(String[] args)
     {
         int numPuertoRMIRegistry = 0;
@@ -21,7 +23,12 @@ public class ClienteDeObjetos {
             direccionIpRMIRegistry,
             numPuertoRMIRegistry,
             "controladorGeneradorTurno");
-         Menu objMenu = new Menu(objRemoto);
+         objAdminModulo = (ControladorAdministradorModuloInt) UtilidadesRegistroC.obtenerObjRemoto(
+            direccionIpRMIRegistry,
+            numPuertoRMIRegistry,
+            "controladorAdministradorModulos");
+         
+         Menu objMenu = new Menu(objRemoto, objAdminModulo);
          objMenu.ejecutarMenuPrincipal();
     }
 }
