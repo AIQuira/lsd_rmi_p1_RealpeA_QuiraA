@@ -30,7 +30,11 @@ public class ClienteDeObjetos {
         try{
             ControladorCallBackImpl objRemotoLadoCliente;
             objRemotoLadoCliente = new ControladorCallBackImpl();
-            objRemoto.registrarReferenciaModulo(objRemotoLadoCliente, noModulo);
+            try{
+                objRemoto.registrarReferenciaModulo(objRemotoLadoCliente, noModulo);
+            }catch(RemoteException ex){
+                System.out.println("Error al registrar el modulo en el servidor: "+ex.getCause().getMessage());
+            }
             System.out.println("Esperando notificaciones");
 
             int opcion = 0;

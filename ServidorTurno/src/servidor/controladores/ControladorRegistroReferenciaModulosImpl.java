@@ -59,9 +59,10 @@ public class ControladorRegistroReferenciaModulosImpl extends UnicastRemoteObjec
         if(!referencias.get(idModulo).equals(refModulo)){
             return -2;
         }
-        if(!modulosRegistrados.get(idModulo).isOcupado()){
+        else if(!modulosRegistrados.get(idModulo).isOcupado()){
             return -3;
         }
+        modulosRegistrados.get(idModulo).setOcupado(false);
         return 1;
     }
 }
